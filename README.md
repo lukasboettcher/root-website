@@ -1,2 +1,4 @@
 # to run
-docker run -d --restart unless-stopped -e "LETSENCRYPT_HOST=btchr.de" -e "VIRTUAL_HOST=btchr.de" -v /var/www:/var/www --name btchr-root-website btchr-root-website
+docker run -d --restart unless-stopped --name root-website \
+    -l traefik.http.routers.root.rule="Host(\`<HOST>\`)" \
+    ghcr.io/lukasboettcher/root-website:master
